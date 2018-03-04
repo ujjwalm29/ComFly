@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	 <!--<link rel="stylesheet" type="text/css" href="static/css/result.css">-->
+  	<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
+  	<style>
+  		body{
+		margin:0;
+		color:#6a6f8c;
+		background:rgba(40,57,101,.6);
+		font:600 16px/18px 'Open Sans',sans-serif;
+	}
+	table{
+	background-color: #fff;
+	position:absolute;
+	width:78%;
+	max-width: 80%;
+	left:10%;
+	top:20%;
+	display: flex;
+	}
+	tr{
+	margin-bottom: 5px;
+	}
+	td,th{
+	padding: 10px 10px 10px 10px;
+	border: 2px none rgba(211,211,211,.6);
+	border-style: none solid none solid;
+	text-align: center;
+	width: 13%;
+	}
+	#flight{
+	height:20%;
+	}
+	.movable{
+	margin-left:30% 
+	height:100%;
+
+	}
+	#logo{
+		position: absolute;
+	top:0;
+	left:3%;
+	height:100%;
+}
+.details{
+	position: absolute;
+	top:20%;
+	left:45%;
+	font-style: bold;
+
+}
+.top{
+	display: inline;
+	width: 100%;
+	position: absolute;
+	top:0;
+	height:13%;
+	background-color: #fff;
+}
+.header{
+	background:rgba(40,57,101,1);
+	color: #fff;
+}
+  	</style>
+  <title>Results</title>
+</head>
+<body>
+	<div class="top">
+	<a href="/">
+		<img id="logo" src="static/images/comFly1.png">
+	</a>
+	<div class="details"><b>{{srcs}}->{{dests}}<br>{{newformat}}</b></div></div>
+<table class="result">
+	<tr class="header">
+		<td><b>Flight Info</b></td>
+		<td><b>Source</b></td>
+		<td><b>Destination</b></td>
+		<td><b>Duration</b></td>
+		<td><b>Prices</b></td>
+		<td><b>Best</b></td>
+	</tr>
+	{%if airlines %}
+    {% for i in range(0,lent) %}
+	<tr>
+		<td class="flight_info">
+			<img id="flight" src="static/images/flight.jpg">
+			<div class="airline">{{airlines[i]}}</div>
+			<div class="flight_no">{{mmt_f_n[i]}}</div>
+		</td>
+		<td class="source">
+			<div class="src">{{srcs}}</div>
+			<div class="depart">{{dept_time[i]}}</div>	
+		</td>
+
+		<td class="dest">
+			<div class="dest">{{dests}}</div>
+			<div class="arrival">{{arr_time[i]}}</div>	
+		</td>
+
+		<td class="duration">
+			<div class="dur_time">{{dur[i]}}</div>
+			<div class="stop">{{journey_type[i]}}</div>	
+		</td>
+		<td class="prices">
+			<div class="yatra_price"><a href="{{url1}}">Yatra Price : {{yatPrice[i]}}</a></div>
+			<div class="mmt_price"><a href="{{url2}}">MMT Price : {{mmt_cost[i]}}</a></div>
+			<div class="ibibo_price"><a href="{{url3}}">ibibo Price : {{ibiPrice[i]}}</a></div>	
+		</td>
+		<td class="best">
+			<div class="cheapest">Cheapest <br>{{cheapest[i]}}</div>	
+		</td>
+	</tr>
+	{% endfor %}
+  	{% else %}
+	<p>Data not found.</p>
+	{% endif %}
+</table>
+</body>
+</html>

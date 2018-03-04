@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	 <link rel="stylesheet" type="text/css" href="static/css/style1.css">
+  	<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
+
+  <title>ComFly</title>
+  
+  
+</head>
+ <body>
+
+  <div class="home-wrap">
+	<div class="home-html">
+		<input id="tab-1" type="radio" name="tab" class="flights" checked="checked"><label for="tab-1" class="tab">Domestic</label>
+		<input id="tab-2" type="radio" name="tab" class="intl"><label for="tab-2" class="tab">International</label>
+		<div class="home-form">
+		<form action="/home" method="POST">
+			<div class="flights-htm">
+				<div class="group">
+					<label for="from" class="label">From</label>
+					<input id="from" type="text" class="input" name="inputFrom" list="airports">
+					<datalist id="airports">
+					{%if cities %}
+    					{% for city in cities %}
+							<option>{{city}}</option>
+					    {% endfor %}
+  					{% else %}
+    					<p>Data not found.</p>
+					 {% endif %}
+					</datalist>
+				</div>
+				<div class="group">
+					<label for="to" class="label">To</label>
+					<input id="to" type="text" class="input" name="inputTo" list="airports">
+					<datalist id="airports">
+					{%if cities %}
+    					{% for city in cities %}
+							<option>{{city}}</option>
+					    {% endfor %}
+  					{% else %}
+    					<p>Data not found.</p>
+					 {% endif %}
+					</datalist>
+				</div>
+				<div class="group">
+					<label for="depart_date" class="label">Depart</label>
+					<input id="depart_date" type="Date" class="input" name="inputDepart" min="24-02-2018">
+					<script>
+						var today = new Date();
+						var dd = today.getDate();
+						var mm = today.getMonth()+1; //January is 0!
+						var yyyy = today.getFullYear();
+ 						if(dd<10){
+        					dd='0'+dd
+    					} 
+    					if(mm<10){
+        					mm='0'+mm
+    					} 
+
+						today = yyyy+'-'+mm+'-'+dd;
+						document.getElementById("depart_date").setAttribute("min", today);
+					</script>
+				</div>
+				<div class="group">
+					<label for="passengers" class="label">Passengers</label>
+					<input id="passengers" type="number" class="input" name="inputPassengers" value="1" min="1">
+				</div>
+				<div class="group">
+					<input type="submit" class="button" value="Search">
+				</div>
+				<div class="hr"></div>
+			</form>
+			</div>
+			<div class="intl-htm">
+			<form action="/intl" method="POST">
+				<div class="group">
+					<label for="from" class="label">From</label>
+					<input id="from" type="text" class="input" name="inputFrom" list="airports">
+					<datalist id=:"airports">
+					{%if cities %}
+    					{% for city in cities %}
+							<option>{{city}}</option>
+					    {% endfor %}
+  					{% else %}
+    					<p>Data not found.</p>
+					 {% endif %}
+					</datalist>
+				</div>
+				<div class="group">
+					<label for="to" class="label">To</label>
+					<input id="to" type="text" class="input" name="inputTo" list="airports">
+					<datalist id=:"airports">
+					{%if cities %}
+    					{% for city in cities %}
+							<option>{{city}}</option>
+					    {% endfor %}
+  					{% else %}
+    					<p>Data not found.</p>
+					 {% endif %}
+					</datalist>
+				</div>
+				<div class="group">
+					<label for="depart_date" class="label">Depart</label>
+					<input id="depart_date" type="Date" class="input" name="inputDepart" min="24-02-2018">
+					<script>
+						var today = new Date();
+						var dd = today.getDate();
+						var mm = today.getMonth()+1; //January is 0!
+						var yyyy = today.getFullYear();
+ 						if(dd<10){
+        					dd='0'+dd
+    					} 
+    					if(mm<10){
+        					mm='0'+mm
+    					} 
+
+						today = yyyy+'-'+mm+'-'+dd;
+						document.getElementById("depart_date").setAttribute("min", today);
+					</script>
+				</div>
+				<div class="group">
+					<label for="passengers" class="label">Passengers</label>
+					<input id="passengers" type="number" class="input" name="inputPassengers" value="1" min="1">
+				</div>
+				
+				<div class="group">
+					<input type="submit" class="button" value="Search Intl">
+				</div>
+			</form>
+				<div class="hr"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<video autoplay loop id="video-background" muted plays-inline>
+  <source src="static/video/home.mp4" type="video/mp4">
+</video>
+  
+</body>
+</html>

@@ -1,0 +1,33 @@
+body{
+	padding-top: 0;
+	background-color: rgba(211,211,211,.2);
+}
+table{
+	background-color: #fff;
+	position:absolute;
+	width:78%;
+	max-width: 80%;
+	left:20%;
+	display: flex;
+}
+tr{
+	margin-bottom: 5px;
+}
+td,th{
+	padding: 10px 10px 10px 10px;
+	border: 2px none rgba(211,211,211,.6);
+	border-style: none solid none solid;
+	text-align: center;
+	width: 13%;
+}
+#flight{
+	height:20%;
+}
+.movable{
+	margin-left:30% 
+	height:100%;
+
+}
+#logo{
+	right:0;
+}
